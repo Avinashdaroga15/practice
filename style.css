@@ -27,3 +27,11 @@ img{
 .left-side{
     padding-left: 20px;
 }
+#myBtn{
+    background-color: lemonchiffon;
+    padding: 6px;
+    position: absolute;
+    left: 850px;
+    top: 14px;
+    margin-bottom: 10px;
+}

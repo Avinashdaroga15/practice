@@ -1,8 +1,10 @@
+        //Adding image container after head container in html
         let div = document.createElement("div");
         let headCont = document.getElementById("head-container");
         div.setAttribute("class","img-container");
         headCont.after(div)
-        //function for making div with setting smile image
+
+        //function for making divs with setting smile image
         function intialImage()
         {   
             for(let i=0;i<16;i++){
@@ -15,10 +17,10 @@
             div.append(div1);
             }
         }
-        //calling function for making divs with smile image
+//calling function for making divs with smile image
         intialImage();
         
-        //adding play button befor image conatiner div
+//adding play button befor image conatiner div
         let headDiv = document.createElement("div");
         headDiv.setAttribute("class","button");
         let btn = document.createElement("button");
@@ -27,7 +29,7 @@
         headDiv.appendChild(btn);
         div.before(headDiv);
         
-
+//storing image dives in variable for later use in property setting
         let item1 = document.getElementById('img1');
         console.log(item1);
         let item2 = document.getElementById('img2');
@@ -47,17 +49,21 @@
         let item15 = document.getElementById('img15');
         let item16 = document.getElementById('img16');
         
+//Array of contain images 
         let game_images = ['./img/images.png', './img/html1.png', './img/css.jpeg', './img/C_Programming_Language.svg.png', './img/bootstrap-stack.png', './img/JavaScript-Logo.png',
             './img/jquery.png', './img/python-logo.png']
         let smile = './img/smile.jpg';
         
+//Variable useful in fun function and counters
         let previousEvSrc;
         let previousEvent = 1;
         let previousEventName;
         let success = 0;
         let Move = 0;
-        let moveDiv = document.getElementById('moves');
+        const moveDiv = document.getElementById('moves');
         const successfulMove = document.getElementById('doneMove');
+
+ //function to suffle array elements
         function shuffleArray(array) {
              for (var i = array.length - 1; i > 0; i--) {
                  var j = Math.floor(Math.random() * (i + 1));
@@ -65,7 +71,8 @@
                  array[i] = array[j];
                  array[j] = temp;
              }
-        }           
+        }      
+//function for item event listeners      
         function fun(item, smil, img) { 
             // console.log("image",smil,"url ","."+item.src.slice(21));
             if (previousEvent) {
@@ -90,7 +97,7 @@
                         previousEvent = 1;
                         previousEventName = " ";
                         moveDiv.textContent = "Move : " + Move;
-                        successfulMove.textContent = "Successful Moves :" + success;
+                        successfulMove.textContent = "Successful Moves : " + success;
                         if (success == 8) {
                             alert("Great You have won game");
                         }
@@ -104,6 +111,7 @@
             }
         }
         
+//Event Listeners 
         item1.addEventListener('click', () => { fun(item1, smile, game_images[0])});
         item2.addEventListener('click', () => { fun(item2, smile, game_images[1])});
         item3.addEventListener('click', () => { fun(item3, smile, game_images[2])});
@@ -121,6 +129,7 @@
         item15.addEventListener('click', () => { fun(item15, smile, game_images[6])});
         item16.addEventListener('click', () => { fun(item16, smile, game_images[7])});
         
+//button event listener
         let myBtn = document.getElementById("myBtn");
         myBtn.addEventListener('click',()=>{
             shuffleArray(game_images);
@@ -131,5 +140,7 @@
             previousEvent = 1;
             success = 0;
             Move = 0;
+            moveDiv.textContent = "Move : " + Move;
+            successfulMove.textContent = "Successful Moves : " + success;
             console.log("it is running ");
         })
