@@ -18,3 +18,12 @@ img{
     overflow: visible;
     background-color: blueviolet;
 }
+#head-container{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    /* grid-template-rows: 1fr; */
+}
+.left-side{
+    padding-left: 20px;
+}

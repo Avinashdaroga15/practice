@@ -1,8 +1,11 @@
-let div = document.createElement("div");
+        let div = document.createElement("div");
+        let headCont = document.getElementById("head-container");
         div.setAttribute("class","img-container");
-        document.body.prepend(div);
+        headCont.after(div)
+        //function for making div with setting smile image
         function intialImage()
-        {   for(let i=0;i<16;i++){
+        {   
+            for(let i=0;i<16;i++){
             let div1 = document.createElement("div");
             // div1.setAttribute("class","img");
             let img = document.createElement("img");
@@ -12,8 +15,10 @@ let div = document.createElement("div");
             div.append(div1);
             }
         }
+        //calling function for making divs with smile image
         intialImage();
-
+        
+        //adding play button befor image conatiner div
         let headDiv = document.createElement("div");
         headDiv.setAttribute("class","button");
         let btn = document.createElement("button");
