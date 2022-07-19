@@ -4,17 +4,16 @@
     let newArrOfImg = [];
     newArrOfImg.push(...game_images);
     newArrOfImg.push(...game_images);
-    shuffleArray(newArrOfImg);
-       
+    shuffleArray(newArrOfImg);      
 //Variable useful in fun function and counters
+    const lenOfImgArr = game_images.length;
     let previousEvSrc;
     let previousEvent = 1;
     let previousEventName;
     let success = 0;
     let Move = 0;
     const moveDiv = document.getElementById('moves');
-    const successfulMove = document.getElementById('doneMove');
-        
+    const successfulMove = document.getElementById('doneMove');      
 //Adding image container after head container in html
     let div = document.createElement("div");
     let headCont = document.getElementById("head-container");
@@ -54,7 +53,7 @@
 //function for making divs with setting smile image
     function intialImage()
     {   
-        for(let i=0;i<16;i++){
+        for(let i=0;i<2*lenOfImgArr;i++){
             let div1 = document.createElement("div");
             // div1.setAttribute("class","img");
             let img = document.createElement("img");
@@ -63,9 +62,7 @@
             div1.append(img);
             div.append(div1);
         }
-    }
-
-            
+    }           
 //function for item event listeners      
     function fun(item, smil, img) { 
         // console.log("image",smil,"url ","."+item.src.slice(21));
@@ -77,12 +74,11 @@
                 previousEvent = 0;
                 previousEventName = item;
             }
-        }else{
+        }else { 
             if ("."+item.src.slice(21) === smil) {
                 item.setAttribute('src', img);
                 previousEvent = 1;
                 Move++;
-                console.log("same hua")
                 setTimeout(function () {
                     if ("."+item.src.slice(21) == previousEvSrc) {
                         previousEventName.removeEventListener('click', fun);
@@ -104,20 +100,18 @@
                 }, 400);
             }
         }
-    }
-        
-//Event Listeners 
-    for(let i = 0; i<16; i++)
+    }       
+//loop for Event Listeners 
+    for(let i = 0; i<2*lenOfImgArr; i++)
     {
         arrItm[i].addEventListener('click', () => { fun(arrItm[i], smileImg, newArrOfImg[i])});
     }
-
 //button event listener
     let myBtn = document.getElementById("myBtn");  
     myBtn.addEventListener('click',()=>{
         shuffleArray(newArrOfImg);
         shuffleArray(game_images);
-        for(let i=0;i<16;i++){
+        for(let i=0;i<2*lenOfImgArr;i++){
             document.getElementById("img"+(i+1)).setAttribute("src",smileImg);
         }
         previousEvent = 1;
@@ -126,4 +120,4 @@
         moveDiv.textContent = "Move : " + Move;
         successfulMove.textContent = "Successful Moves : " + success;
         console.log("it is running ");
-    })
+    })          
